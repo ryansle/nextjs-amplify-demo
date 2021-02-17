@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    backgroundColor: "#113A6D",
+    backgroundColor: "#094A64",
   },
   menuButton: {
     margin: "0px 36px 0px -20px",

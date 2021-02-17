@@ -1,0 +1,20 @@
+export const cards = [
+  {
+    id: "dynamic-route-1",
+    title: "Dynamic route",
+    description:
+      "I am a next/link. I point to a specific page within our pages directory, and can pass my props to the page to be server-side rendered. ",
+  },
+  {
+    id: "name-it-anything",
+    title: "Name your routes anything",
+    description:
+      "These components are tied to the [id].js file within the /dynamic-routes directory of pages. You just have to match the IDs to the json content.",
+  },
+  {
+    id: "last-route",
+    title: "Fetch as needed, instead of continously",
+    description:
+      "We can use this to fetch data from an API ONLY as it is requested. That's the magic of Next.js, and how it is so blazing fast.",
+  },
+];

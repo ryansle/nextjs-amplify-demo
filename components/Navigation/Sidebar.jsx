@@ -8,15 +8,7 @@ import {
   ListItemText,
   useMediaQuery,
 } from "@material-ui/core";
-import {
-  Dashboard,
-  Receipt,
-  LibraryBooks as Books,
-  MonetizationOn as Credit,
-  SupervisorAccount as Admin,
-  List as Bullets,
-  Folder,
-} from "@material-ui/icons";
+import { Dashboard, DynamicFeed, Lock } from "@material-ui/icons";
 import Link from "next/link";
 
 // Utilities
@@ -32,33 +24,19 @@ const Sidebar = ({ selected, shrink }) => {
     switch (title) {
       case "Dashboard":
         return (
-          <Dashboard
-            className={path === selected ? classes.selectedIcon : ""}
+          <Dashboard className={selected === "/" ? classes.selectedIcon : ""} />
+        );
+      case "Dynamic Routes":
+        return (
+          <DynamicFeed
+            className={selected.includes(path) ? classes.selectedIcon : ""}
           />
         );
-      case "Point of Sale":
+      case "Protected Routes":
         return (
-          <Receipt className={path === selected ? classes.selectedIcon : ""} />
-        );
-      case "Book Request":
-        return (
-          <Books className={path === selected ? classes.selectedIcon : ""} />
-        );
-      case "Trade Credit":
-        return (
-          <Credit className={path === selected ? classes.selectedIcon : ""} />
-        );
-      case "Administration":
-        return (
-          <Admin className={path === selected ? classes.selectedIcon : ""} />
-        );
-      case "ListServ":
-        return (
-          <Bullets className={path === selected ? classes.selectedIcon : ""} />
-        );
-      case "Legacy Items":
-        return (
-          <Folder className={path === selected ? classes.selectedIcon : ""} />
+          <Lock
+            className={selected.includes(path) ? classes.selectedIcon : ""}
+          />
         );
       default:
         return;

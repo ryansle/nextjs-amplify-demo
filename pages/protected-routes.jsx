@@ -4,12 +4,12 @@ import React from "react";
 import { Typography } from "@material-ui/core";
 import AppNavigation from "../components/Navigation/AppNavigation";
 
-const Dashboard = () => {
+const ProtectedRoutes = () => {
   return (
     <AppNavigation>
-      <Typography variant="h3">Dashboard</Typography>
+      <Typography variant="h3">Protected Routes</Typography>
     </AppNavigation>
   );
 };
 
-export default Dashboard;
+export default ProtectedRoutes;
