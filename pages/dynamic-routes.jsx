@@ -46,7 +46,7 @@ const DynamicRoutes = () => {
       <Grid container justify="space-between">
         {cards.map((card) => (
           <Link key={card.id} href={`/dynamic-routes/${card.id}`}>
-            <Card className={classes.card}>
+            <Card className={classes.card} variant="outlined">
               <CardContent>
                 <Typography variant="h5">{card.title}</Typography>
                 <br />

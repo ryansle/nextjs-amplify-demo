@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 
 // Components
-import { AppBar, Toolbar, IconButton, useMediaQuery } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Button,
+  useMediaQuery,
+} from "@material-ui/core";
 import {
   Menu as Hamburger,
   NotificationsNone,
@@ -53,15 +59,7 @@ const Header = ({ handleDrawer }) => {
           </IconButton>
         ) : (
           <>
-            <IconButton color="inherit">
-              <NotificationsNone aria-label="Notifications" />
-            </IconButton>
-            <IconButton color="inherit" aria-label="Language">
-              <Language />
-            </IconButton>
-            <IconButton color="inherit" aria-label="My Profile">
-              <Person />
-            </IconButton>
+            <Button variant="contained">Login</Button>
           </>
         )}
       </Toolbar>
