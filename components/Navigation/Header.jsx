@@ -8,13 +8,8 @@ import {
   Button,
   useMediaQuery,
 } from "@material-ui/core";
-import {
-  Menu as Hamburger,
-  NotificationsNone,
-  Language,
-  Person,
-  MoreVert,
-} from "@material-ui/icons";
+import { Menu as Hamburger, MoreVert } from "@material-ui/icons";
+import Link from "next/link";
 
 // Utilities
 import { makeStyles } from "@material-ui/core/styles";
@@ -59,7 +54,9 @@ const Header = ({ handleDrawer }) => {
           </IconButton>
         ) : (
           <>
-            <Button variant="contained">Login</Button>
+            <Link href="/signin">
+              <Button variant="contained">Login</Button>
+            </Link>
           </>
         )}
       </Toolbar>
