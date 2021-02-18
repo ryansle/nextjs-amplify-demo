@@ -34,15 +34,16 @@ const SignIn = ({ form, setForm }) => {
   async function signIn() {
     try {
       setLoading(true);
-      await Auth.signIn(form.email, form.password);
-      router.push("/profile");
+      await Auth.signIn(form.username, form.password);
+      router.reload("");
+      router.push("/");
       setLoading(false);
     } catch (error) {
       // TODO: Error handling: incorrect login
       console.log("error signing in", error);
 
       if (error.code === "UserNotConfirmedException") {
-        Auth.resendSignUp(form.email);
+        Auth.resendSignUp(form.username);
         router.push(
           {
             pathname: "/signup",

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 // Components
 import {
@@ -9,17 +9,22 @@ import {
   useMediaQuery,
 } from "@material-ui/core";
 import { Menu as Hamburger, MoreVert } from "@material-ui/icons";
+import MobileHeaderMenu from "./MobileHeaderMenu";
 import Link from "next/link";
 
 // Utilities
 import { makeStyles } from "@material-ui/core/styles";
-import MobileHeaderMenu from "./MobileHeaderMenu";
+import { Auth } from "aws-amplify";
+import { useRouter } from "next/router";
+import { UserContext } from "../Authentication/AuthenticationProvider";
 
 const Header = ({ handleDrawer }) => {
   const classes = useStyles();
   const phoneScreen = useMediaQuery("(max-width: 600px)");
 
   const [anchorEl, setAnchorEl] = useState(null);
+  const [user, setUser] = useContext(UserContext);
+  const router = useRouter();
 
   const openMobileMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -27,6 +32,15 @@ const Header = ({ handleDrawer }) => {
 
   const closeMobileMenu = () => {
     setAnchorEl(null);
+  };
+
+  const signOut = async () => {
+    try {
+      await Auth.signOut();
+      router.reload();
+    } catch (error) {
+      console.log("error signing out: ", error);
+    }
   };
 
   return (
@@ -52,12 +66,14 @@ const Header = ({ handleDrawer }) => {
           >
             <MoreVert />
           </IconButton>
+        ) : user ? (
+          <Button variant="contained" onClick={signOut}>
+            Logout
+          </Button>
         ) : (
-          <>
-            <Link href="/signin">
-              <Button variant="contained">Login</Button>
-            </Link>
-          </>
+          <Link href="/signin">
+            <Button variant="contained">Login</Button>
+          </Link>
         )}
       </Toolbar>
 

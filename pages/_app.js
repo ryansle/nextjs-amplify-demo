@@ -2,6 +2,7 @@ import React from "react";
 
 // Components
 import { ThemeProvider } from "@material-ui/core";
+import { AuthenticationProvider } from "../components/Authentication/AuthenticationProvider";
 
 // Utilities
 import { createMuiTheme } from "@material-ui/core/styles";
@@ -23,7 +24,9 @@ Amplify.configure({
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
+      <AuthenticationProvider>
+        <Component {...pageProps} />
+      </AuthenticationProvider>
     </ThemeProvider>    
   );
 };
